@@ -51,7 +51,7 @@ assignIpv6Addresses :: forall eff. Service -> AssignIpv6AddressesRequest -> Aff 
 #### `assignPrivateIpAddresses`
 
 ``` purescript
-assignPrivateIpAddresses :: forall eff. Service -> AssignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+assignPrivateIpAddresses :: forall eff. Service -> AssignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about Elastic IP addresses, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>AssignPrivateIpAddresses is available only in EC2-VPC.</p>
@@ -67,7 +67,7 @@ associateAddress :: forall eff. Service -> AssociateAddressRequest -> Aff (excep
 #### `associateDhcpOptions`
 
 ``` purescript
-associateDhcpOptions :: forall eff. Service -> AssociateDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+associateDhcpOptions :: forall eff. Service -> AssociateDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.</p> <p>After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don't need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -115,7 +115,7 @@ attachClassicLinkVpc :: forall eff. Service -> AttachClassicLinkVpcRequest -> Af
 #### `attachInternetGateway`
 
 ``` purescript
-attachInternetGateway :: forall eff. Service -> AttachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+attachInternetGateway :: forall eff. Service -> AttachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Attaches an Internet gateway to a VPC, enabling connectivity between the Internet and the VPC. For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.</p>
@@ -147,7 +147,7 @@ attachVpnGateway :: forall eff. Service -> AttachVpnGatewayRequest -> Aff (excep
 #### `authorizeSecurityGroupEgress`
 
 ``` purescript
-authorizeSecurityGroupEgress :: forall eff. Service -> AuthorizeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+authorizeSecurityGroupEgress :: forall eff. Service -> AuthorizeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.</p> <p>Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.</p>
@@ -155,7 +155,7 @@ authorizeSecurityGroupEgress :: forall eff. Service -> AuthorizeSecurityGroupEgr
 #### `authorizeSecurityGroupIngress`
 
 ``` purescript
-authorizeSecurityGroupIngress :: forall eff. Service -> AuthorizeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+authorizeSecurityGroupIngress :: forall eff. Service -> AuthorizeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Adds one or more ingress rules to a security group.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p> <p>[EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security group for your account. A source group can be for your own AWS account, or another. You can have up to 100 rules per group.</p> <p>[EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>You can optionally specify a description for the security group rule.</p>
@@ -179,7 +179,7 @@ cancelBundleTask :: forall eff. Service -> CancelBundleTaskRequest -> Aff (excep
 #### `cancelConversionTask`
 
 ``` purescript
-cancelConversionTask :: forall eff. Service -> CancelConversionRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+cancelConversionTask :: forall eff. Service -> CancelConversionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html">Importing a Virtual Machine Using the Amazon EC2 CLI</a>.</p>
@@ -187,7 +187,7 @@ cancelConversionTask :: forall eff. Service -> CancelConversionRequest -> Aff (e
 #### `cancelExportTask`
 
 ``` purescript
-cancelExportTask :: forall eff. Service -> CancelExportTaskRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+cancelExportTask :: forall eff. Service -> CancelExportTaskRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.</p>
@@ -379,7 +379,7 @@ createNetworkAcl :: forall eff. Service -> CreateNetworkAclRequest -> Aff (excep
 #### `createNetworkAclEntry`
 
 ``` purescript
-createNetworkAclEntry :: forall eff. Service -> CreateNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+createNetworkAclEntry :: forall eff. Service -> CreateNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.</p> <p>We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules.</p> <p>After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one.</p> <p>For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -403,7 +403,7 @@ createNetworkInterfacePermission :: forall eff. Service -> CreateNetworkInterfac
 #### `createPlacementGroup`
 
 ``` purescript
-createPlacementGroup :: forall eff. Service -> CreatePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+createPlacementGroup :: forall eff. Service -> CreatePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. </p> <p>A <code>cluster</code> placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A <code>spread</code> placement group places instances on distinct hardware.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -467,7 +467,7 @@ createSubnet :: forall eff. Service -> CreateSubnetRequest -> Aff (exception :: 
 #### `createTags`
 
 ``` purescript
-createTags :: forall eff. Service -> CreateTagsRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+createTags :: forall eff. Service -> CreateTagsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about creating IAM policies that control users' access to resources based on tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html">Supported Resource-Level Permissions for Amazon EC2 API Actions</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -531,7 +531,7 @@ createVpnConnection :: forall eff. Service -> CreateVpnConnectionRequest -> Aff 
 #### `createVpnConnectionRoute`
 
 ``` purescript
-createVpnConnectionRoute :: forall eff. Service -> CreateVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+createVpnConnectionRoute :: forall eff. Service -> CreateVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p> <p>For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -547,7 +547,7 @@ createVpnGateway :: forall eff. Service -> CreateVpnGatewayRequest -> Aff (excep
 #### `deleteCustomerGateway`
 
 ``` purescript
-deleteCustomerGateway :: forall eff. Service -> DeleteCustomerGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteCustomerGateway :: forall eff. Service -> DeleteCustomerGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.</p>
@@ -555,7 +555,7 @@ deleteCustomerGateway :: forall eff. Service -> DeleteCustomerGatewayRequest -> 
 #### `deleteDhcpOptions`
 
 ``` purescript
-deleteDhcpOptions :: forall eff. Service -> DeleteDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteDhcpOptions :: forall eff. Service -> DeleteDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.</p>
@@ -587,7 +587,7 @@ deleteFpgaImage :: forall eff. Service -> DeleteFpgaImageRequest -> Aff (excepti
 #### `deleteInternetGateway`
 
 ``` purescript
-deleteInternetGateway :: forall eff. Service -> DeleteInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteInternetGateway :: forall eff. Service -> DeleteInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified Internet gateway. You must detach the Internet gateway from the VPC before you can delete it.</p>
@@ -595,7 +595,7 @@ deleteInternetGateway :: forall eff. Service -> DeleteInternetGatewayRequest -> 
 #### `deleteKeyPair`
 
 ``` purescript
-deleteKeyPair :: forall eff. Service -> DeleteKeyPairRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteKeyPair :: forall eff. Service -> DeleteKeyPairRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified key pair, by removing the public key from Amazon EC2.</p>
@@ -627,7 +627,7 @@ deleteNatGateway :: forall eff. Service -> DeleteNatGatewayRequest -> Aff (excep
 #### `deleteNetworkAcl`
 
 ``` purescript
-deleteNetworkAcl :: forall eff. Service -> DeleteNetworkAclRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteNetworkAcl :: forall eff. Service -> DeleteNetworkAclRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.</p>
@@ -635,7 +635,7 @@ deleteNetworkAcl :: forall eff. Service -> DeleteNetworkAclRequest -> Aff (excep
 #### `deleteNetworkAclEntry`
 
 ``` purescript
-deleteNetworkAclEntry :: forall eff. Service -> DeleteNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteNetworkAclEntry :: forall eff. Service -> DeleteNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified ingress or egress entry (rule) from the specified network ACL.</p>
@@ -643,7 +643,7 @@ deleteNetworkAclEntry :: forall eff. Service -> DeleteNetworkAclEntryRequest -> 
 #### `deleteNetworkInterface`
 
 ``` purescript
-deleteNetworkInterface :: forall eff. Service -> DeleteNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteNetworkInterface :: forall eff. Service -> DeleteNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified network interface. You must detach the network interface before you can delete it.</p>
@@ -659,7 +659,7 @@ deleteNetworkInterfacePermission :: forall eff. Service -> DeleteNetworkInterfac
 #### `deletePlacementGroup`
 
 ``` purescript
-deletePlacementGroup :: forall eff. Service -> DeletePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deletePlacementGroup :: forall eff. Service -> DeletePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -667,7 +667,7 @@ deletePlacementGroup :: forall eff. Service -> DeletePlacementGroupRequest -> Af
 #### `deleteRoute`
 
 ``` purescript
-deleteRoute :: forall eff. Service -> DeleteRouteRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteRoute :: forall eff. Service -> DeleteRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified route from the specified route table.</p>
@@ -675,7 +675,7 @@ deleteRoute :: forall eff. Service -> DeleteRouteRequest -> Aff (exception :: EX
 #### `deleteRouteTable`
 
 ``` purescript
-deleteRouteTable :: forall eff. Service -> DeleteRouteTableRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteRouteTable :: forall eff. Service -> DeleteRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.</p>
@@ -683,7 +683,7 @@ deleteRouteTable :: forall eff. Service -> DeleteRouteTableRequest -> Aff (excep
 #### `deleteSecurityGroup`
 
 ``` purescript
-deleteSecurityGroup :: forall eff. Service -> DeleteSecurityGroupRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteSecurityGroup :: forall eff. Service -> DeleteSecurityGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes a security group.</p> <p>If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with <code>InvalidGroup.InUse</code> in EC2-Classic or <code>DependencyViolation</code> in EC2-VPC.</p>
@@ -691,7 +691,7 @@ deleteSecurityGroup :: forall eff. Service -> DeleteSecurityGroupRequest -> Aff 
 #### `deleteSnapshot`
 
 ``` purescript
-deleteSnapshot :: forall eff. Service -> DeleteSnapshotRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteSnapshot :: forall eff. Service -> DeleteSnapshotRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified snapshot.</p> <p>When you make periodic snapshots of a volume, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the volume.</p> <p>You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html">Deleting an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -699,7 +699,7 @@ deleteSnapshot :: forall eff. Service -> DeleteSnapshotRequest -> Aff (exception
 #### `deleteSpotDatafeedSubscription`
 
 ``` purescript
-deleteSpotDatafeedSubscription :: forall eff. Service -> DeleteSpotDatafeedSubscriptionRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteSpotDatafeedSubscription :: forall eff. Service -> DeleteSpotDatafeedSubscriptionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the data feed for Spot Instances.</p>
@@ -707,7 +707,7 @@ deleteSpotDatafeedSubscription :: forall eff. Service -> DeleteSpotDatafeedSubsc
 #### `deleteSubnet`
 
 ``` purescript
-deleteSubnet :: forall eff. Service -> DeleteSubnetRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteSubnet :: forall eff. Service -> DeleteSubnetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.</p>
@@ -715,7 +715,7 @@ deleteSubnet :: forall eff. Service -> DeleteSubnetRequest -> Aff (exception :: 
 #### `deleteTags`
 
 ``` purescript
-deleteTags :: forall eff. Service -> DeleteTagsRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteTags :: forall eff. Service -> DeleteTagsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified set of tags from the specified set of resources.</p> <p>To list the current tags, use <a>DescribeTags</a>. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -723,7 +723,7 @@ deleteTags :: forall eff. Service -> DeleteTagsRequest -> Aff (exception :: EXCE
 #### `deleteVolume`
 
 ``` purescript
-deleteVolume :: forall eff. Service -> DeleteVolumeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVolume :: forall eff. Service -> DeleteVolumeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified EBS volume. The volume must be in the <code>available</code> state (not attached to an instance).</p> <note> <p>The volume may remain in the <code>deleting</code> state for several minutes.</p> </note> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html">Deleting an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -731,7 +731,7 @@ deleteVolume :: forall eff. Service -> DeleteVolumeRequest -> Aff (exception :: 
 #### `deleteVpc`
 
 ``` purescript
-deleteVpc :: forall eff. Service -> DeleteVpcRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVpc :: forall eff. Service -> DeleteVpcRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.</p>
@@ -771,7 +771,7 @@ deleteVpcPeeringConnection :: forall eff. Service -> DeleteVpcPeeringConnectionR
 #### `deleteVpnConnection`
 
 ``` purescript
-deleteVpnConnection :: forall eff. Service -> DeleteVpnConnectionRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVpnConnection :: forall eff. Service -> DeleteVpnConnectionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified VPN connection.</p> <p>If you're deleting the VPC and its associated components, we recommend that you detach the virtual private gateway from the VPC and delete the VPC before deleting the VPN connection. If you believe that the tunnel credentials for your VPN connection have been compromised, you can delete the VPN connection and create a new one that has new keys, without needing to delete the VPC or virtual private gateway. If you create a new VPN connection, you must reconfigure the customer gateway using the new configuration information returned with the new VPN connection ID.</p>
@@ -779,7 +779,7 @@ deleteVpnConnection :: forall eff. Service -> DeleteVpnConnectionRequest -> Aff 
 #### `deleteVpnConnectionRoute`
 
 ``` purescript
-deleteVpnConnectionRoute :: forall eff. Service -> DeleteVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVpnConnectionRoute :: forall eff. Service -> DeleteVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p>
@@ -787,7 +787,7 @@ deleteVpnConnectionRoute :: forall eff. Service -> DeleteVpnConnectionRouteReque
 #### `deleteVpnGateway`
 
 ``` purescript
-deleteVpnGateway :: forall eff. Service -> DeleteVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVpnGateway :: forall eff. Service -> DeleteVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.</p>
@@ -795,7 +795,7 @@ deleteVpnGateway :: forall eff. Service -> DeleteVpnGatewayRequest -> Aff (excep
 #### `deregisterImage`
 
 ``` purescript
-deregisterImage :: forall eff. Service -> DeregisterImageRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deregisterImage :: forall eff. Service -> DeregisterImageRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances; however, it doesn't affect any instances that you've already launched from the AMI. You'll continue to incur usage costs for those instances until you terminate them.</p> <p>When you deregister an Amazon EBS-backed AMI, it doesn't affect the snapshot that was created for the root volume of the instance during the AMI creation process. When you deregister an instance store-backed AMI, it doesn't affect the files that you uploaded to Amazon S3 when you created the AMI.</p>
@@ -1451,7 +1451,7 @@ detachClassicLinkVpc :: forall eff. Service -> DetachClassicLinkVpcRequest -> Af
 #### `detachInternetGateway`
 
 ``` purescript
-detachInternetGateway :: forall eff. Service -> DetachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+detachInternetGateway :: forall eff. Service -> DetachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Detaches an Internet gateway from a VPC, disabling connectivity between the Internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.</p>
@@ -1459,7 +1459,7 @@ detachInternetGateway :: forall eff. Service -> DetachInternetGatewayRequest -> 
 #### `detachNetworkInterface`
 
 ``` purescript
-detachNetworkInterface :: forall eff. Service -> DetachNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+detachNetworkInterface :: forall eff. Service -> DetachNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Detaches a network interface from an instance.</p>
@@ -1475,7 +1475,7 @@ detachVolume :: forall eff. Service -> DetachVolumeRequest -> Aff (exception :: 
 #### `detachVpnGateway`
 
 ``` purescript
-detachVpnGateway :: forall eff. Service -> DetachVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+detachVpnGateway :: forall eff. Service -> DetachVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).</p> <p>You must wait for the attachment's state to switch to <code>detached</code> before you can delete the VPC or attach a different VPC to the virtual private gateway.</p>
@@ -1483,7 +1483,7 @@ detachVpnGateway :: forall eff. Service -> DetachVpnGatewayRequest -> Aff (excep
 #### `disableVgwRoutePropagation`
 
 ``` purescript
-disableVgwRoutePropagation :: forall eff. Service -> DisableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+disableVgwRoutePropagation :: forall eff. Service -> DisableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.</p>
@@ -1507,7 +1507,7 @@ disableVpcClassicLinkDnsSupport :: forall eff. Service -> DisableVpcClassicLinkD
 #### `disassociateAddress`
 
 ``` purescript
-disassociateAddress :: forall eff. Service -> DisassociateAddressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+disassociateAddress :: forall eff. Service -> DisassociateAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Disassociates an Elastic IP address from the instance or network interface it's associated with.</p> <p>An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.</p>
@@ -1523,7 +1523,7 @@ disassociateIamInstanceProfile :: forall eff. Service -> DisassociateIamInstance
 #### `disassociateRouteTable`
 
 ``` purescript
-disassociateRouteTable :: forall eff. Service -> DisassociateRouteTableRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+disassociateRouteTable :: forall eff. Service -> DisassociateRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Disassociates a subnet from a route table.</p> <p>After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route table. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -1547,7 +1547,7 @@ disassociateVpcCidrBlock :: forall eff. Service -> DisassociateVpcCidrBlockReque
 #### `enableVgwRoutePropagation`
 
 ``` purescript
-enableVgwRoutePropagation :: forall eff. Service -> EnableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+enableVgwRoutePropagation :: forall eff. Service -> EnableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.</p>
@@ -1555,7 +1555,7 @@ enableVgwRoutePropagation :: forall eff. Service -> EnableVgwRoutePropagationReq
 #### `enableVolumeIO`
 
 ``` purescript
-enableVolumeIO :: forall eff. Service -> EnableVolumeIORequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+enableVolumeIO :: forall eff. Service -> EnableVolumeIORequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.</p>
@@ -1683,7 +1683,7 @@ modifyHosts :: forall eff. Service -> ModifyHostsRequest -> Aff (exception :: EX
 #### `modifyIdFormat`
 
 ``` purescript
-modifyIdFormat :: forall eff. Service -> ModifyIdFormatRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyIdFormat :: forall eff. Service -> ModifyIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.</p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>.</p> <p>This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you're using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
@@ -1691,7 +1691,7 @@ modifyIdFormat :: forall eff. Service -> ModifyIdFormatRequest -> Aff (exception
 #### `modifyIdentityIdFormat`
 
 ``` purescript
-modifyIdentityIdFormat :: forall eff. Service -> ModifyIdentityIdFormatRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyIdentityIdFormat :: forall eff. Service -> ModifyIdentityIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created. </p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>This setting applies to the principal specified in the request; it does not apply to the principal that makes the request. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
@@ -1699,7 +1699,7 @@ modifyIdentityIdFormat :: forall eff. Service -> ModifyIdentityIdFormatRequest -
 #### `modifyImageAttribute`
 
 ``` purescript
-modifyImageAttribute :: forall eff. Service -> ModifyImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyImageAttribute :: forall eff. Service -> ModifyImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the <code>Attribute</code> parameter to specify the attribute or one of the following parameters: <code>Description</code>, <code>LaunchPermission</code>, or <code>ProductCode</code>.</p> <p>AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.</p> <p>To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.</p>
@@ -1707,7 +1707,7 @@ modifyImageAttribute :: forall eff. Service -> ModifyImageAttributeRequest -> Af
 #### `modifyInstanceAttribute`
 
 ``` purescript
-modifyInstanceAttribute :: forall eff. Service -> ModifyInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyInstanceAttribute :: forall eff. Service -> ModifyInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.</p> <p>To modify some attributes, the instance must be stopped. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html">Modifying Attributes of a Stopped Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -1739,7 +1739,7 @@ modifyLaunchTemplate :: forall eff. Service -> ModifyLaunchTemplateRequest -> Af
 #### `modifyNetworkInterfaceAttribute`
 
 ``` purescript
-modifyNetworkInterfaceAttribute :: forall eff. Service -> ModifyNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyNetworkInterfaceAttribute :: forall eff. Service -> ModifyNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the specified network interface attribute. You can specify only one attribute at a time.</p>
@@ -1755,7 +1755,7 @@ modifyReservedInstances :: forall eff. Service -> ModifyReservedInstancesRequest
 #### `modifySnapshotAttribute`
 
 ``` purescript
-modifySnapshotAttribute :: forall eff. Service -> ModifySnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifySnapshotAttribute :: forall eff. Service -> ModifySnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.</p> <note> <p>Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.</p> </note> <p>For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -1771,7 +1771,7 @@ modifySpotFleetRequest :: forall eff. Service -> ModifySpotFleetRequestRequest -
 #### `modifySubnetAttribute`
 
 ``` purescript
-modifySubnetAttribute :: forall eff. Service -> ModifySubnetAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifySubnetAttribute :: forall eff. Service -> ModifySubnetAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies a subnet attribute. You can only modify one attribute at a time.</p>
@@ -1787,7 +1787,7 @@ modifyVolume :: forall eff. Service -> ModifyVolumeRequest -> Aff (exception :: 
 #### `modifyVolumeAttribute`
 
 ``` purescript
-modifyVolumeAttribute :: forall eff. Service -> ModifyVolumeAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyVolumeAttribute :: forall eff. Service -> ModifyVolumeAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies a volume attribute.</p> <p>By default, all I/O operations for the volume are suspended when the data on the volume is determined to be potentially inconsistent, to prevent undetectable, latent data corruption. The I/O access to the volume can be resumed by first enabling I/O access and then checking the data consistency on your volume.</p> <p>You can change the default behavior to resume I/O operations. We recommend that you change this only for boot volumes or for volumes that are stateless or disposable.</p>
@@ -1795,7 +1795,7 @@ modifyVolumeAttribute :: forall eff. Service -> ModifyVolumeAttributeRequest -> 
 #### `modifyVpcAttribute`
 
 ``` purescript
-modifyVpcAttribute :: forall eff. Service -> ModifyVpcAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+modifyVpcAttribute :: forall eff. Service -> ModifyVpcAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Modifies the specified attribute of the specified VPC.</p>
@@ -1891,7 +1891,7 @@ purchaseScheduledInstances :: forall eff. Service -> PurchaseScheduledInstancesR
 #### `rebootInstances`
 
 ``` purescript
-rebootInstances :: forall eff. Service -> RebootInstancesRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+rebootInstances :: forall eff. Service -> RebootInstancesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.</p> <p>If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.</p> <p>For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html">Getting Console Output and Rebooting Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -1923,7 +1923,7 @@ rejectVpcPeeringConnection :: forall eff. Service -> RejectVpcPeeringConnectionR
 #### `releaseAddress`
 
 ``` purescript
-releaseAddress :: forall eff. Service -> ReleaseAddressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+releaseAddress :: forall eff. Service -> ReleaseAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Releases the specified Elastic IP address.</p> <p>[EC2-Classic, default VPC] Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. To disassociate an Elastic IP address without releasing it, use <a>DisassociateAddress</a>.</p> <p>[Nondefault VPC] You must use <a>DisassociateAddress</a> to disassociate the Elastic IP address before you can release it. Otherwise, Amazon EC2 returns an error (<code>InvalidIPAddress.InUse</code>).</p> <p>After releasing an Elastic IP address, it is released to the IP address pool. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an <code>AuthFailure</code> error if the address is already allocated to another AWS account.</p> <p>[EC2-VPC] After you release an Elastic IP address for use in a VPC, you might be able to recover it. For more information, see <a>AllocateAddress</a>.</p>
@@ -1955,7 +1955,7 @@ replaceNetworkAclAssociation :: forall eff. Service -> ReplaceNetworkAclAssociat
 #### `replaceNetworkAclEntry`
 
 ``` purescript
-replaceNetworkAclEntry :: forall eff. Service -> ReplaceNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+replaceNetworkAclEntry :: forall eff. Service -> ReplaceNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Replaces an entry (rule) in a network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -1963,7 +1963,7 @@ replaceNetworkAclEntry :: forall eff. Service -> ReplaceNetworkAclEntryRequest -
 #### `replaceRoute`
 
 ``` purescript
-replaceRoute :: forall eff. Service -> ReplaceRouteRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+replaceRoute :: forall eff. Service -> ReplaceRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only Internet gateway.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -1979,7 +1979,7 @@ replaceRouteTableAssociation :: forall eff. Service -> ReplaceRouteTableAssociat
 #### `reportInstanceStatus`
 
 ``` purescript
-reportInstanceStatus :: forall eff. Service -> ReportInstanceStatusRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+reportInstanceStatus :: forall eff. Service -> ReportInstanceStatusRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Submits feedback about the status of an instance. The instance must be in the <code>running</code> state. If your experience with the instance differs from the instance status returned by <a>DescribeInstanceStatus</a>, use <a>ReportInstanceStatus</a> to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.</p> <p>Use of this action does not change the value returned by <a>DescribeInstanceStatus</a>.</p>
@@ -2011,7 +2011,7 @@ resetFpgaImageAttribute :: forall eff. Service -> ResetFpgaImageAttributeRequest
 #### `resetImageAttribute`
 
 ``` purescript
-resetImageAttribute :: forall eff. Service -> ResetImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+resetImageAttribute :: forall eff. Service -> ResetImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Resets an attribute of an AMI to its default value.</p> <note> <p>The productCodes attribute can't be reset.</p> </note>
@@ -2019,7 +2019,7 @@ resetImageAttribute :: forall eff. Service -> ResetImageAttributeRequest -> Aff 
 #### `resetInstanceAttribute`
 
 ``` purescript
-resetInstanceAttribute :: forall eff. Service -> ResetInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+resetInstanceAttribute :: forall eff. Service -> ResetInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Resets an attribute of an instance to its default value. To reset the <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped state. To reset the <code>sourceDestCheck</code>, the instance can be either running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls whether source/destination checking is enabled. The default value is <code>true</code>, which means checking is enabled. This value must be <code>false</code> for a NAT instance to perform NAT. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
@@ -2027,7 +2027,7 @@ resetInstanceAttribute :: forall eff. Service -> ResetInstanceAttributeRequest -
 #### `resetNetworkInterfaceAttribute`
 
 ``` purescript
-resetNetworkInterfaceAttribute :: forall eff. Service -> ResetNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+resetNetworkInterfaceAttribute :: forall eff. Service -> ResetNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Resets a network interface attribute. You can specify only one attribute at a time.</p>
@@ -2035,7 +2035,7 @@ resetNetworkInterfaceAttribute :: forall eff. Service -> ResetNetworkInterfaceAt
 #### `resetSnapshotAttribute`
 
 ``` purescript
-resetSnapshotAttribute :: forall eff. Service -> ResetSnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+resetSnapshotAttribute :: forall eff. Service -> ResetSnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Resets permission settings for the specified snapshot.</p> <p>For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
@@ -2051,7 +2051,7 @@ restoreAddressToClassic :: forall eff. Service -> RestoreAddressToClassicRequest
 #### `revokeSecurityGroupEgress`
 
 ``` purescript
-revokeSecurityGroupEgress :: forall eff. Service -> RevokeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+revokeSecurityGroupEgress :: forall eff. Service -> RevokeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC. This action doesn't apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <p>Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
@@ -2059,7 +2059,7 @@ revokeSecurityGroupEgress :: forall eff. Service -> RevokeSecurityGroupEgressReq
 #### `revokeSecurityGroupIngress`
 
 ``` purescript
-revokeSecurityGroupIngress :: forall eff. Service -> RevokeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+revokeSecurityGroupIngress :: forall eff. Service -> RevokeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <note> <p>[EC2-Classic security groups only] If the values you specify do not match the existing rule's values, no error is returned. Use <a>DescribeSecurityGroups</a> to verify that the rule has been removed.</p> </note> <p>Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
@@ -2115,7 +2115,7 @@ unassignIpv6Addresses :: forall eff. Service -> UnassignIpv6AddressesRequest -> 
 #### `unassignPrivateIpAddresses`
 
 ``` purescript
-unassignPrivateIpAddresses :: forall eff. Service -> UnassignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+unassignPrivateIpAddresses :: forall eff. Service -> UnassignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Unassigns one or more secondary private IP addresses from a network interface.</p>

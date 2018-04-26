@@ -49,7 +49,7 @@ assignIpv6Addresses (EC2.Service serviceImpl) = AWS.request serviceImpl method  
 
 
 -- | <p>Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about Elastic IP addresses, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>AssignPrivateIpAddresses is available only in EC2-VPC.</p>
-assignPrivateIpAddresses :: forall eff. EC2.Service -> EC2Types.AssignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+assignPrivateIpAddresses :: forall eff. EC2.Service -> EC2Types.AssignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 assignPrivateIpAddresses (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "assignPrivateIpAddresses"
 
@@ -61,7 +61,7 @@ associateAddress (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.</p> <p>After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don't need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-associateDhcpOptions :: forall eff. EC2.Service -> EC2Types.AssociateDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+associateDhcpOptions :: forall eff. EC2.Service -> EC2Types.AssociateDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 associateDhcpOptions (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "associateDhcpOptions"
 
@@ -97,7 +97,7 @@ attachClassicLinkVpc (EC2.Service serviceImpl) = AWS.request serviceImpl method 
 
 
 -- | <p>Attaches an Internet gateway to a VPC, enabling connectivity between the Internet and the VPC. For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.</p>
-attachInternetGateway :: forall eff. EC2.Service -> EC2Types.AttachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+attachInternetGateway :: forall eff. EC2.Service -> EC2Types.AttachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 attachInternetGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "attachInternetGateway"
 
@@ -121,13 +121,13 @@ attachVpnGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>[EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. For more information about security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.</p> <p>Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.</p>
-authorizeSecurityGroupEgress :: forall eff. EC2.Service -> EC2Types.AuthorizeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+authorizeSecurityGroupEgress :: forall eff. EC2.Service -> EC2Types.AuthorizeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 authorizeSecurityGroupEgress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "authorizeSecurityGroupEgress"
 
 
 -- | <p>Adds one or more ingress rules to a security group.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p> <p>[EC2-Classic] This action gives one or more IPv4 CIDR address ranges permission to access a security group in your account, or gives one or more security groups (called the <i>source groups</i>) permission to access a security group for your account. A source group can be for your own AWS account, or another. You can have up to 100 rules per group.</p> <p>[EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the <i>source groups</i>) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a>.</p> <p>You can optionally specify a description for the security group rule.</p>
-authorizeSecurityGroupIngress :: forall eff. EC2.Service -> EC2Types.AuthorizeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+authorizeSecurityGroupIngress :: forall eff. EC2.Service -> EC2Types.AuthorizeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 authorizeSecurityGroupIngress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "authorizeSecurityGroupIngress"
 
@@ -145,13 +145,13 @@ cancelBundleTask (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html">Importing a Virtual Machine Using the Amazon EC2 CLI</a>.</p>
-cancelConversionTask :: forall eff. EC2.Service -> EC2Types.CancelConversionRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+cancelConversionTask :: forall eff. EC2.Service -> EC2Types.CancelConversionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 cancelConversionTask (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "cancelConversionTask"
 
 
 -- | <p>Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.</p>
-cancelExportTask :: forall eff. EC2.Service -> EC2Types.CancelExportTaskRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+cancelExportTask :: forall eff. EC2.Service -> EC2Types.CancelExportTaskRequest -> Aff (exception :: EXCEPTION | eff) Unit
 cancelExportTask (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "cancelExportTask"
 
@@ -295,7 +295,7 @@ createNetworkAcl (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.</p> <p>We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules.</p> <p>After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one.</p> <p>For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-createNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.CreateNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+createNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.CreateNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 createNetworkAclEntry (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "createNetworkAclEntry"
 
@@ -313,7 +313,7 @@ createNetworkInterfacePermission (EC2.Service serviceImpl) = AWS.request service
 
 
 -- | <p>Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. </p> <p>A <code>cluster</code> placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A <code>spread</code> placement group places instances on distinct hardware.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-createPlacementGroup :: forall eff. EC2.Service -> EC2Types.CreatePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+createPlacementGroup :: forall eff. EC2.Service -> EC2Types.CreatePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 createPlacementGroup (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "createPlacementGroup"
 
@@ -361,7 +361,7 @@ createSubnet (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
 
 
 -- | <p>Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about creating IAM policies that control users' access to resources based on tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html">Supported Resource-Level Permissions for Amazon EC2 API Actions</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-createTags :: forall eff. EC2.Service -> EC2Types.CreateTagsRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+createTags :: forall eff. EC2.Service -> EC2Types.CreateTagsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 createTags (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "createTags"
 
@@ -409,7 +409,7 @@ createVpnConnection (EC2.Service serviceImpl) = AWS.request serviceImpl method  
 
 
 -- | <p>Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p> <p>For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">AWS Managed VPN Connections</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-createVpnConnectionRoute :: forall eff. EC2.Service -> EC2Types.CreateVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+createVpnConnectionRoute :: forall eff. EC2.Service -> EC2Types.CreateVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 createVpnConnectionRoute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "createVpnConnectionRoute"
 
@@ -421,13 +421,13 @@ createVpnGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.</p>
-deleteCustomerGateway :: forall eff. EC2.Service -> EC2Types.DeleteCustomerGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteCustomerGateway :: forall eff. EC2.Service -> EC2Types.DeleteCustomerGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteCustomerGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteCustomerGateway"
 
 
 -- | <p>Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.</p>
-deleteDhcpOptions :: forall eff. EC2.Service -> EC2Types.DeleteDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteDhcpOptions :: forall eff. EC2.Service -> EC2Types.DeleteDhcpOptionsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteDhcpOptions (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteDhcpOptions"
 
@@ -451,13 +451,13 @@ deleteFpgaImage (EC2.Service serviceImpl) = AWS.request serviceImpl method  wher
 
 
 -- | <p>Deletes the specified Internet gateway. You must detach the Internet gateway from the VPC before you can delete it.</p>
-deleteInternetGateway :: forall eff. EC2.Service -> EC2Types.DeleteInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteInternetGateway :: forall eff. EC2.Service -> EC2Types.DeleteInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteInternetGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteInternetGateway"
 
 
 -- | <p>Deletes the specified key pair, by removing the public key from Amazon EC2.</p>
-deleteKeyPair :: forall eff. EC2.Service -> EC2Types.DeleteKeyPairRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteKeyPair :: forall eff. EC2.Service -> EC2Types.DeleteKeyPairRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteKeyPair (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteKeyPair"
 
@@ -481,19 +481,19 @@ deleteNatGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  whe
 
 
 -- | <p>Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.</p>
-deleteNetworkAcl :: forall eff. EC2.Service -> EC2Types.DeleteNetworkAclRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteNetworkAcl :: forall eff. EC2.Service -> EC2Types.DeleteNetworkAclRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteNetworkAcl (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteNetworkAcl"
 
 
 -- | <p>Deletes the specified ingress or egress entry (rule) from the specified network ACL.</p>
-deleteNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.DeleteNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.DeleteNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteNetworkAclEntry (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteNetworkAclEntry"
 
 
 -- | <p>Deletes the specified network interface. You must detach the network interface before you can delete it.</p>
-deleteNetworkInterface :: forall eff. EC2.Service -> EC2Types.DeleteNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteNetworkInterface :: forall eff. EC2.Service -> EC2Types.DeleteNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteNetworkInterface (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteNetworkInterface"
 
@@ -505,61 +505,61 @@ deleteNetworkInterfacePermission (EC2.Service serviceImpl) = AWS.request service
 
 
 -- | <p>Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-deletePlacementGroup :: forall eff. EC2.Service -> EC2Types.DeletePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deletePlacementGroup :: forall eff. EC2.Service -> EC2Types.DeletePlacementGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deletePlacementGroup (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deletePlacementGroup"
 
 
 -- | <p>Deletes the specified route from the specified route table.</p>
-deleteRoute :: forall eff. EC2.Service -> EC2Types.DeleteRouteRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteRoute :: forall eff. EC2.Service -> EC2Types.DeleteRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteRoute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteRoute"
 
 
 -- | <p>Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.</p>
-deleteRouteTable :: forall eff. EC2.Service -> EC2Types.DeleteRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteRouteTable :: forall eff. EC2.Service -> EC2Types.DeleteRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteRouteTable (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteRouteTable"
 
 
 -- | <p>Deletes a security group.</p> <p>If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with <code>InvalidGroup.InUse</code> in EC2-Classic or <code>DependencyViolation</code> in EC2-VPC.</p>
-deleteSecurityGroup :: forall eff. EC2.Service -> EC2Types.DeleteSecurityGroupRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteSecurityGroup :: forall eff. EC2.Service -> EC2Types.DeleteSecurityGroupRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteSecurityGroup (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteSecurityGroup"
 
 
 -- | <p>Deletes the specified snapshot.</p> <p>When you make periodic snapshots of a volume, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the volume.</p> <p>You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html">Deleting an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-deleteSnapshot :: forall eff. EC2.Service -> EC2Types.DeleteSnapshotRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteSnapshot :: forall eff. EC2.Service -> EC2Types.DeleteSnapshotRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteSnapshot (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteSnapshot"
 
 
 -- | <p>Deletes the data feed for Spot Instances.</p>
-deleteSpotDatafeedSubscription :: forall eff. EC2.Service -> EC2Types.DeleteSpotDatafeedSubscriptionRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteSpotDatafeedSubscription :: forall eff. EC2.Service -> EC2Types.DeleteSpotDatafeedSubscriptionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteSpotDatafeedSubscription (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteSpotDatafeedSubscription"
 
 
 -- | <p>Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.</p>
-deleteSubnet :: forall eff. EC2.Service -> EC2Types.DeleteSubnetRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteSubnet :: forall eff. EC2.Service -> EC2Types.DeleteSubnetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteSubnet (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteSubnet"
 
 
 -- | <p>Deletes the specified set of tags from the specified set of resources.</p> <p>To list the current tags, use <a>DescribeTags</a>. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-deleteTags :: forall eff. EC2.Service -> EC2Types.DeleteTagsRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteTags :: forall eff. EC2.Service -> EC2Types.DeleteTagsRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteTags (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteTags"
 
 
 -- | <p>Deletes the specified EBS volume. The volume must be in the <code>available</code> state (not attached to an instance).</p> <note> <p>The volume may remain in the <code>deleting</code> state for several minutes.</p> </note> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html">Deleting an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-deleteVolume :: forall eff. EC2.Service -> EC2Types.DeleteVolumeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVolume :: forall eff. EC2.Service -> EC2Types.DeleteVolumeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVolume (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVolume"
 
 
 -- | <p>Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.</p>
-deleteVpc :: forall eff. EC2.Service -> EC2Types.DeleteVpcRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVpc :: forall eff. EC2.Service -> EC2Types.DeleteVpcRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVpc (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVpc"
 
@@ -589,25 +589,25 @@ deleteVpcPeeringConnection (EC2.Service serviceImpl) = AWS.request serviceImpl m
 
 
 -- | <p>Deletes the specified VPN connection.</p> <p>If you're deleting the VPC and its associated components, we recommend that you detach the virtual private gateway from the VPC and delete the VPC before deleting the VPN connection. If you believe that the tunnel credentials for your VPN connection have been compromised, you can delete the VPN connection and create a new one that has new keys, without needing to delete the VPC or virtual private gateway. If you create a new VPN connection, you must reconfigure the customer gateway using the new configuration information returned with the new VPN connection ID.</p>
-deleteVpnConnection :: forall eff. EC2.Service -> EC2Types.DeleteVpnConnectionRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVpnConnection :: forall eff. EC2.Service -> EC2Types.DeleteVpnConnectionRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVpnConnection (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVpnConnection"
 
 
 -- | <p>Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.</p>
-deleteVpnConnectionRoute :: forall eff. EC2.Service -> EC2Types.DeleteVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVpnConnectionRoute :: forall eff. EC2.Service -> EC2Types.DeleteVpnConnectionRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVpnConnectionRoute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVpnConnectionRoute"
 
 
 -- | <p>Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.</p>
-deleteVpnGateway :: forall eff. EC2.Service -> EC2Types.DeleteVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVpnGateway :: forall eff. EC2.Service -> EC2Types.DeleteVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVpnGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVpnGateway"
 
 
 -- | <p>Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances; however, it doesn't affect any instances that you've already launched from the AMI. You'll continue to incur usage costs for those instances until you terminate them.</p> <p>When you deregister an Amazon EBS-backed AMI, it doesn't affect the snapshot that was created for the root volume of the instance during the AMI creation process. When you deregister an instance store-backed AMI, it doesn't affect the files that you uploaded to Amazon S3 when you created the AMI.</p>
-deregisterImage :: forall eff. EC2.Service -> EC2Types.DeregisterImageRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deregisterImage :: forall eff. EC2.Service -> EC2Types.DeregisterImageRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deregisterImage (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deregisterImage"
 
@@ -1099,13 +1099,13 @@ detachClassicLinkVpc (EC2.Service serviceImpl) = AWS.request serviceImpl method 
 
 
 -- | <p>Detaches an Internet gateway from a VPC, disabling connectivity between the Internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.</p>
-detachInternetGateway :: forall eff. EC2.Service -> EC2Types.DetachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+detachInternetGateway :: forall eff. EC2.Service -> EC2Types.DetachInternetGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 detachInternetGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "detachInternetGateway"
 
 
 -- | <p>Detaches a network interface from an instance.</p>
-detachNetworkInterface :: forall eff. EC2.Service -> EC2Types.DetachNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+detachNetworkInterface :: forall eff. EC2.Service -> EC2Types.DetachNetworkInterfaceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 detachNetworkInterface (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "detachNetworkInterface"
 
@@ -1117,13 +1117,13 @@ detachVolume (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
 
 
 -- | <p>Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).</p> <p>You must wait for the attachment's state to switch to <code>detached</code> before you can delete the VPC or attach a different VPC to the virtual private gateway.</p>
-detachVpnGateway :: forall eff. EC2.Service -> EC2Types.DetachVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+detachVpnGateway :: forall eff. EC2.Service -> EC2Types.DetachVpnGatewayRequest -> Aff (exception :: EXCEPTION | eff) Unit
 detachVpnGateway (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "detachVpnGateway"
 
 
 -- | <p>Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.</p>
-disableVgwRoutePropagation :: forall eff. EC2.Service -> EC2Types.DisableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+disableVgwRoutePropagation :: forall eff. EC2.Service -> EC2Types.DisableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Unit
 disableVgwRoutePropagation (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "disableVgwRoutePropagation"
 
@@ -1141,7 +1141,7 @@ disableVpcClassicLinkDnsSupport (EC2.Service serviceImpl) = AWS.request serviceI
 
 
 -- | <p>Disassociates an Elastic IP address from the instance or network interface it's associated with.</p> <p>An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.</p>
-disassociateAddress :: forall eff. EC2.Service -> EC2Types.DisassociateAddressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+disassociateAddress :: forall eff. EC2.Service -> EC2Types.DisassociateAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 disassociateAddress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "disassociateAddress"
 
@@ -1153,7 +1153,7 @@ disassociateIamInstanceProfile (EC2.Service serviceImpl) = AWS.request serviceIm
 
 
 -- | <p>Disassociates a subnet from a route table.</p> <p>After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route table. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-disassociateRouteTable :: forall eff. EC2.Service -> EC2Types.DisassociateRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+disassociateRouteTable :: forall eff. EC2.Service -> EC2Types.DisassociateRouteTableRequest -> Aff (exception :: EXCEPTION | eff) Unit
 disassociateRouteTable (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "disassociateRouteTable"
 
@@ -1171,13 +1171,13 @@ disassociateVpcCidrBlock (EC2.Service serviceImpl) = AWS.request serviceImpl met
 
 
 -- | <p>Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.</p>
-enableVgwRoutePropagation :: forall eff. EC2.Service -> EC2Types.EnableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+enableVgwRoutePropagation :: forall eff. EC2.Service -> EC2Types.EnableVgwRoutePropagationRequest -> Aff (exception :: EXCEPTION | eff) Unit
 enableVgwRoutePropagation (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "enableVgwRoutePropagation"
 
 
 -- | <p>Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.</p>
-enableVolumeIO :: forall eff. EC2.Service -> EC2Types.EnableVolumeIORequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+enableVolumeIO :: forall eff. EC2.Service -> EC2Types.EnableVolumeIORequest -> Aff (exception :: EXCEPTION | eff) Unit
 enableVolumeIO (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "enableVolumeIO"
 
@@ -1273,25 +1273,25 @@ modifyHosts (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
 
 
 -- | <p>Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.</p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>.</p> <p>This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you're using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
-modifyIdFormat :: forall eff. EC2.Service -> EC2Types.ModifyIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyIdFormat :: forall eff. EC2.Service -> EC2Types.ModifyIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyIdFormat (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyIdFormat"
 
 
 -- | <p>Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created. </p> <p>This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> | <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> | <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> | <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code> | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> | <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code> | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </p> <p>This setting applies to the principal specified in the request; it does not apply to the principal that makes the request. </p> <p>Resources created with longer IDs are visible to all IAM roles and users, regardless of these settings and provided that they have permission to use the relevant <code>Describe</code> command for the resource type.</p>
-modifyIdentityIdFormat :: forall eff. EC2.Service -> EC2Types.ModifyIdentityIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyIdentityIdFormat :: forall eff. EC2.Service -> EC2Types.ModifyIdentityIdFormatRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyIdentityIdFormat (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyIdentityIdFormat"
 
 
 -- | <p>Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the <code>Attribute</code> parameter to specify the attribute or one of the following parameters: <code>Description</code>, <code>LaunchPermission</code>, or <code>ProductCode</code>.</p> <p>AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.</p> <p>To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.</p>
-modifyImageAttribute :: forall eff. EC2.Service -> EC2Types.ModifyImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyImageAttribute :: forall eff. EC2.Service -> EC2Types.ModifyImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyImageAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyImageAttribute"
 
 
 -- | <p>Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.</p> <p>To modify some attributes, the instance must be stopped. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html">Modifying Attributes of a Stopped Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-modifyInstanceAttribute :: forall eff. EC2.Service -> EC2Types.ModifyInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyInstanceAttribute :: forall eff. EC2.Service -> EC2Types.ModifyInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyInstanceAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyInstanceAttribute"
 
@@ -1315,7 +1315,7 @@ modifyLaunchTemplate (EC2.Service serviceImpl) = AWS.request serviceImpl method 
 
 
 -- | <p>Modifies the specified network interface attribute. You can specify only one attribute at a time.</p>
-modifyNetworkInterfaceAttribute :: forall eff. EC2.Service -> EC2Types.ModifyNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyNetworkInterfaceAttribute :: forall eff. EC2.Service -> EC2Types.ModifyNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyNetworkInterfaceAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyNetworkInterfaceAttribute"
 
@@ -1327,7 +1327,7 @@ modifyReservedInstances (EC2.Service serviceImpl) = AWS.request serviceImpl meth
 
 
 -- | <p>Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.</p> <note> <p>Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.</p> </note> <p>For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-modifySnapshotAttribute :: forall eff. EC2.Service -> EC2Types.ModifySnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifySnapshotAttribute :: forall eff. EC2.Service -> EC2Types.ModifySnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifySnapshotAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifySnapshotAttribute"
 
@@ -1339,7 +1339,7 @@ modifySpotFleetRequest (EC2.Service serviceImpl) = AWS.request serviceImpl metho
 
 
 -- | <p>Modifies a subnet attribute. You can only modify one attribute at a time.</p>
-modifySubnetAttribute :: forall eff. EC2.Service -> EC2Types.ModifySubnetAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifySubnetAttribute :: forall eff. EC2.Service -> EC2Types.ModifySubnetAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifySubnetAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifySubnetAttribute"
 
@@ -1351,13 +1351,13 @@ modifyVolume (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
 
 
 -- | <p>Modifies a volume attribute.</p> <p>By default, all I/O operations for the volume are suspended when the data on the volume is determined to be potentially inconsistent, to prevent undetectable, latent data corruption. The I/O access to the volume can be resumed by first enabling I/O access and then checking the data consistency on your volume.</p> <p>You can change the default behavior to resume I/O operations. We recommend that you change this only for boot volumes or for volumes that are stateless or disposable.</p>
-modifyVolumeAttribute :: forall eff. EC2.Service -> EC2Types.ModifyVolumeAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyVolumeAttribute :: forall eff. EC2.Service -> EC2Types.ModifyVolumeAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyVolumeAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyVolumeAttribute"
 
 
 -- | <p>Modifies the specified attribute of the specified VPC.</p>
-modifyVpcAttribute :: forall eff. EC2.Service -> EC2Types.ModifyVpcAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+modifyVpcAttribute :: forall eff. EC2.Service -> EC2Types.ModifyVpcAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 modifyVpcAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "modifyVpcAttribute"
 
@@ -1429,7 +1429,7 @@ purchaseScheduledInstances (EC2.Service serviceImpl) = AWS.request serviceImpl m
 
 
 -- | <p>Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.</p> <p>If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.</p> <p>For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html">Getting Console Output and Rebooting Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-rebootInstances :: forall eff. EC2.Service -> EC2Types.RebootInstancesRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+rebootInstances :: forall eff. EC2.Service -> EC2Types.RebootInstancesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 rebootInstances (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "rebootInstances"
 
@@ -1453,7 +1453,7 @@ rejectVpcPeeringConnection (EC2.Service serviceImpl) = AWS.request serviceImpl m
 
 
 -- | <p>Releases the specified Elastic IP address.</p> <p>[EC2-Classic, default VPC] Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. To disassociate an Elastic IP address without releasing it, use <a>DisassociateAddress</a>.</p> <p>[Nondefault VPC] You must use <a>DisassociateAddress</a> to disassociate the Elastic IP address before you can release it. Otherwise, Amazon EC2 returns an error (<code>InvalidIPAddress.InUse</code>).</p> <p>After releasing an Elastic IP address, it is released to the IP address pool. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an <code>AuthFailure</code> error if the address is already allocated to another AWS account.</p> <p>[EC2-VPC] After you release an Elastic IP address for use in a VPC, you might be able to recover it. For more information, see <a>AllocateAddress</a>.</p>
-releaseAddress :: forall eff. EC2.Service -> EC2Types.ReleaseAddressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+releaseAddress :: forall eff. EC2.Service -> EC2Types.ReleaseAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 releaseAddress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "releaseAddress"
 
@@ -1477,13 +1477,13 @@ replaceNetworkAclAssociation (EC2.Service serviceImpl) = AWS.request serviceImpl
 
 
 -- | <p>Replaces an entry (rule) in a network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-replaceNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.ReplaceNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+replaceNetworkAclEntry :: forall eff. EC2.Service -> EC2Types.ReplaceNetworkAclEntryRequest -> Aff (exception :: EXCEPTION | eff) Unit
 replaceNetworkAclEntry (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "replaceNetworkAclEntry"
 
 
 -- | <p>Replaces an existing route within a route table in a VPC. You must provide only one of the following: Internet gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or egress-only Internet gateway.</p> <p>For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-replaceRoute :: forall eff. EC2.Service -> EC2Types.ReplaceRouteRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+replaceRoute :: forall eff. EC2.Service -> EC2Types.ReplaceRouteRequest -> Aff (exception :: EXCEPTION | eff) Unit
 replaceRoute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "replaceRoute"
 
@@ -1495,7 +1495,7 @@ replaceRouteTableAssociation (EC2.Service serviceImpl) = AWS.request serviceImpl
 
 
 -- | <p>Submits feedback about the status of an instance. The instance must be in the <code>running</code> state. If your experience with the instance differs from the instance status returned by <a>DescribeInstanceStatus</a>, use <a>ReportInstanceStatus</a> to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.</p> <p>Use of this action does not change the value returned by <a>DescribeInstanceStatus</a>.</p>
-reportInstanceStatus :: forall eff. EC2.Service -> EC2Types.ReportInstanceStatusRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+reportInstanceStatus :: forall eff. EC2.Service -> EC2Types.ReportInstanceStatusRequest -> Aff (exception :: EXCEPTION | eff) Unit
 reportInstanceStatus (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "reportInstanceStatus"
 
@@ -1519,25 +1519,25 @@ resetFpgaImageAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl meth
 
 
 -- | <p>Resets an attribute of an AMI to its default value.</p> <note> <p>The productCodes attribute can't be reset.</p> </note>
-resetImageAttribute :: forall eff. EC2.Service -> EC2Types.ResetImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+resetImageAttribute :: forall eff. EC2.Service -> EC2Types.ResetImageAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 resetImageAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "resetImageAttribute"
 
 
 -- | <p>Resets an attribute of an instance to its default value. To reset the <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped state. To reset the <code>sourceDestCheck</code>, the instance can be either running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls whether source/destination checking is enabled. The default value is <code>true</code>, which means checking is enabled. This value must be <code>false</code> for a NAT instance to perform NAT. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
-resetInstanceAttribute :: forall eff. EC2.Service -> EC2Types.ResetInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+resetInstanceAttribute :: forall eff. EC2.Service -> EC2Types.ResetInstanceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 resetInstanceAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "resetInstanceAttribute"
 
 
 -- | <p>Resets a network interface attribute. You can specify only one attribute at a time.</p>
-resetNetworkInterfaceAttribute :: forall eff. EC2.Service -> EC2Types.ResetNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+resetNetworkInterfaceAttribute :: forall eff. EC2.Service -> EC2Types.ResetNetworkInterfaceAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 resetNetworkInterfaceAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "resetNetworkInterfaceAttribute"
 
 
 -- | <p>Resets permission settings for the specified snapshot.</p> <p>For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-resetSnapshotAttribute :: forall eff. EC2.Service -> EC2Types.ResetSnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+resetSnapshotAttribute :: forall eff. EC2.Service -> EC2Types.ResetSnapshotAttributeRequest -> Aff (exception :: EXCEPTION | eff) Unit
 resetSnapshotAttribute (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "resetSnapshotAttribute"
 
@@ -1549,13 +1549,13 @@ restoreAddressToClassic (EC2.Service serviceImpl) = AWS.request serviceImpl meth
 
 
 -- | <p>[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC. This action doesn't apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <p>Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
-revokeSecurityGroupEgress :: forall eff. EC2.Service -> EC2Types.RevokeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+revokeSecurityGroupEgress :: forall eff. EC2.Service -> EC2Types.RevokeSecurityGroupEgressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 revokeSecurityGroupEgress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "revokeSecurityGroupEgress"
 
 
 -- | <p>Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.</p> <note> <p>[EC2-Classic security groups only] If the values you specify do not match the existing rule's values, no error is returned. Use <a>DescribeSecurityGroups</a> to verify that the rule has been removed.</p> </note> <p>Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p> <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
-revokeSecurityGroupIngress :: forall eff. EC2.Service -> EC2Types.RevokeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+revokeSecurityGroupIngress :: forall eff. EC2.Service -> EC2Types.RevokeSecurityGroupIngressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 revokeSecurityGroupIngress (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "revokeSecurityGroupIngress"
 
@@ -1597,7 +1597,7 @@ unassignIpv6Addresses (EC2.Service serviceImpl) = AWS.request serviceImpl method
 
 
 -- | <p>Unassigns one or more secondary private IP addresses from a network interface.</p>
-unassignPrivateIpAddresses :: forall eff. EC2.Service -> EC2Types.UnassignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+unassignPrivateIpAddresses :: forall eff. EC2.Service -> EC2Types.UnassignPrivateIpAddressesRequest -> Aff (exception :: EXCEPTION | eff) Unit
 unassignPrivateIpAddresses (EC2.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "unassignPrivateIpAddresses"
 
